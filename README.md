@@ -34,3 +34,33 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+--------------------------------------------------------------
+// DoughnutChart.tsx
+"use client"; // This directive is necessary for using hooks in Next.js server components
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Doughnut } from "react-chartjs-2";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+interface DoughnutChartProps {
+    accounts: any[]; // Define the correct type for your accounts if possible
+}
+
+const DoughnutChart = ({ accounts }: DoughnutChartProps) => {
+    // Example data - you can modify this based on the actual accounts data
+    const data = {
+        labels: ['Bank1', 'Bank2', 'Bank3'],
+        datasets: [
+            {
+                label: 'Banks',
+                data: [1250, 2500, 3750], // Use actual data from accounts if needed
+                backgroundColor: ['#0747b6', '#2265d8', '#2f91fa'],
+            },
+        ],
+    };
+
+    // Make sure to return the JSX element here
+    return <Doughnut data={data} />;
+};
+
+export default DoughnutChart;
